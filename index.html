@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roman Q. Chavez</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+</head>
+<body class="text-gray-900">
+
+  <!-- Banner with Navbar -->
+  <header class="relative w-full h-72">
+    <img src="media/banner.jpg" class="w-full h-full object-cover object-[50%_70%]">
+    <nav class="absolute top-0 left-0 w-full flex justify-center space-x-8 p-4 bg-black/50 text-white z-20">
+      <a href="#about" class="hover:underline">About</a>
+      <a href="#research" class="hover:underline">Research</a>
+      <a href="#projects" class="hover:underline">Projects</a>
+      <a href="#art" class="hover:underline">Generative Art</a>
+    </nav>
+  </header>
+
+  <!-- Page content wrapper -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-8 space-y-12">
+
+    <!-- Profile + Bio Card -->
+    <section id="about" class="flex justify-start -mt-24 relative z-30">
+      <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8 w-full">
+        <!-- Profile image -->
+        <div class="w-56 h-56 rounded-full overflow-hidden flex-shrink-0">
+          <img src="media/profile.jpg" 
+            class="block object-cover object-[100%_10%] w-[190%] h-[160%]" 
+            alt="Profile">
+        </div>
+
+        <!-- Bio text -->
+        <div class="text-left w-full">
+          <h2 class="text-3xl font-bold mb-1 text-center sm:text-left">Roman Q. Chavez</h2>
+          <p class="text-gray-500 text-sm mb-3 text-center sm:text-left">
+            Student at Cornell University &middot; Pure Mathematics, Indigenous Studies
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            I’m a senior at Cornell University studying Pure Mathematics, with a minor in American Indian and Indigenous Studies. 
+            I am also an undergraduate researcher in the Department of Natural Resources studying ecological calendars and their mathematical implications. 
+            My interests include algebra, differential forms, ecological calendars, policy, and generative/algorithmic art using Java Processing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Section -->
+    <section class="w-full max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Image 1 with hover card -->
+        <div class="relative group">
+          <img 
+            src="media/2024_Internship_Reception-82.jpg" 
+            alt="First photo" 
+            class="w-full h-64 object-cover rounded-2xl shadow-md"
+          />
+          <!-- Hover card -->
+          <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <!-- Description text -->
+            <p class="text-white text-center p-4">Research presentation for Cornell Cooperative Extension representing Warren County.</p>
+            <!-- Date in bottom right -->
+            <span class="absolute bottom-2 right-2 text-white text-sm opacity-80">September 13, 2024</span>
+          </div>
+        </div>
+
+        <!-- Image 2 with hover card -->
+        <div class="relative group">
+          <img 
+            src="media/chalkboard.jpg" 
+            alt="Second photo" 
+            class="w-full h-64 object-cover rounded-2xl shadow-md"
+          />
+          <!-- Hover card -->
+          <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p class="text-white text-center p-4">Practice lecture at the Department of Mathematics at Cornell University.</p>
+            <span class="absolute bottom-2 right-2 text-white text-sm opacity-80">Janurary 8, 2025</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- Research Card -->
+    <section id="research">
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="text-2xl font-bold mb-4">Research</h2>
+
+        <!-- Always visible intro -->
+        <p class="text-gray-700 leading-relaxed">
+          My current research focuses on <strong>ecological calendars</strong> as a way to understand how communities can anticipate and adapt to climate change. An ecological calendar is a knowledge-based system that tracks seasonal changes by observing ecological indicators; such as the first frost, the bloom of a flower, the arrival of migratory birds, or the position of stars in the sky. These indicators are not isolated events: they are interconnected, where the occurrence of one often signals or informs another.
+        </p>
+
+        <!-- Collapsible content -->
+        <div id="research-more" class="hidden mt-4 space-y-4 text-gray-700 leading-relaxed">
+          <p>
+            In Warren County, New York, I am working with community members to document, analyze, and synthesize local ecological knowledge into a regional ecological calendar. This work is being conducted in partnership with <strong>Cornell Cooperative Extension of Warren County</strong> and <strong>Cornell University</strong>, under the guidance of Professor <strong>Karim-Aly Kassam</strong>. Through interviews and seasonal mapping, we gather knowledge of environmental cues that have long guided activities such as planting, harvesting, hunting, and community organization. By bringing this knowledge together with scientific data, we hope to generate calendars that are both scientifically rigorous and culturally meaningful, providing tools to help communities adapt to the local effects of global climate change.
+          </p>
+          <p>
+            From a mathematical perspective, I am interested in how ecological calendars can be thought of as <strong>models of interconnected indicators</strong>. Each indicator, whether it is a frost, a bloom, or a migration event, exists within a system of relationships. Tracking these indicators over time may reveal hidden structures, possibly existing along “paths” in higher dimensions shaped by population dynamics, plant growth rates, spawning cycles, and other variables.
+          </p>
+          <p>
+            Ultimately, I view ecological calendars not only as cultural knowledge systems but also as dynamic, living models—ones that may require constant updating in response to shifting climates and changing ecosystems. By studying their structure, I hope to better understand both the mathematics of interdependence and the ways in which communities can remain resilient in the face of environmental uncertainty.
+          </p>
+
+          <!-- Link to professor's website -->
+          <p>
+            To learn more about my research group, you can visit my professor's website here: 
+            <a href="https://blogs.cornell.edu/karim-aly--kassam/students/" target="_blank" class="text-blue-600 hover:underline">
+              https://blogs.cornell.edu/karim-aly--kassam/students/
+            </a>
+          </p>
+        </div>
+
+        <!-- Toggle button -->
+        <button id="toggle-research" class="flex items-center text-blue-600 mt-4 hover:underline focus:outline-none">
+          <span>Read more</span>
+          <svg id="arrow-icon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- Photo + Card Section -->
+    <section class="w-full max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Teaching Photo with hover card -->
+        <div class="relative group">
+          <img 
+            src="media/teaching.png" 
+            alt="Teaching photo" 
+            class="w-full h-64 object-cover rounded-2xl shadow-md"
+          />
+          <!-- Hover card -->
+          <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <!-- Description text -->
+            <p class="text-white text-center p-4">
+              Teaching high school students how to solve the Rubik's Cube at SMASH Academy
+            </p>
+            <!-- Date in bottom right -->
+            <span class="absolute bottom-2 right-2 text-white text-sm opacity-80">July 15, 2025</span>
+          </div>
+        </div>
+
+        <!-- Passions & Mission Card -->
+        <div class="w-full h-64 bg-white rounded-2xl shadow-md p-6 flex flex-col justify-center">
+          <h3 class="text-xl font-bold text-gray-800 mb-2">Passions & Mission</h3>
+          <p class="text-gray-700 text-sm leading-relaxed">
+            I am passionate about sharing knowledge and helping students understand the inner workings of mathematics, encouraging them to see the world through a mathematical lens.
+          </p>
+          <p class="text-gray-700 text-sm leading-relaxed mt-2">
+            As the founder of the <strong>Jr. Oakland Cubers</strong>, I have helped over <strong>1,000 youth</strong>, particularly marginalized youth, learn to solve the Rubik’s Cube, building confidence and problem-solving skills along the way.
+          </p>
+
+          <!-- Toggle button -->
+          <button id="toggle-npr" class="flex items-center text-blue-600 mt-4 hover:underline focus:outline-none">
+            <span>Read more</span>
+            <svg id="arrow-npr" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1 transition-transform duration-300" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- NPR Podcast Feature (hidden by default) -->
+      <div id="npr-more" class="mt-6 hidden bg-white rounded-2xl shadow-md p-6">
+        <!-- Header row: Logo + Actions -->
+        <div class="flex items-center justify-between mb-3">
+          <!-- NPR Logo -->
+          <img src="media/NPR Logo_Color_RGB.png"
+              alt="NPR Logo" class="h-6">
+
+          <!-- Actions -->
+          <div class="text-sm text-blue-600 space-x-2">
+            <a href="https://www.npr.org/transcripts/1198910469" 
+              target="_blank" 
+              class="hover:text-blue-800">View on NPR</a>
+            <span class="text-gray-400">·</span>
+            <button id="share-btn" class="hover:text-blue-800">Share</button>
+          </div>
+        </div>
+
+        <!-- Title + Date -->
+        <h3 class="text-lg font-semibold text-gray-800 mb-1">
+          Featured on NPR Shortwave
+        </h3>
+        <p class="text-gray-500 text-sm mb-3">Published July 31, 2024</p>
+
+        <!-- Description -->
+        <p class="text-gray-700 mb-4">
+          I joined NPR’s <em>Shortwave</em> podcast for the <strong>50th anniversary of the Rubik’s Cube</strong>, 
+          where I shared my passion for teaching problem-solving and how the cube has impacted youth 
+          through the Jr. Oakland Cubers.
+        </p>
+
+        <!-- Thumbnail + Custom Audio Controls -->
+        <div class="flex items-center space-x-4 mb-4">
+          <!-- Thumbnail -->
+          <img src="https://media.npr.org/assets/img/2024/07/30/7.31.24-ep-b1f0d351a261886b747553a81d35b587ce53b1fe.jpg?s=1600&c=85&f=webp" 
+              alt="Podcast Thumbnail" 
+              class="w-28 h-28 object-cover rounded-xl shadow">
+
+          <!-- Play controls -->
+          <div class="flex flex-col justify-center w-full">
+            <!-- Play button -->
+            <button id="play-btn" 
+                    class="p-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition shadow w-12 h-12 flex items-center justify-center mb-2">
+              ▶
+            </button>
+
+            <!-- Progress bar -->
+            <div class="w-full">
+              <div id="progress-container" class="w-full h-2 bg-gray-200 rounded-full cursor-pointer">
+                <div id="progress-bar" class="h-2 bg-blue-600 rounded-full" style="width: 0%;"></div>
+              </div>
+              <!-- Time display -->
+              <div class="flex justify-between text-xs text-gray-600 mt-1">
+                <span id="current-time">Listen now</span>
+                <span id="total-duration">--:--</span>
+              </div>
+            </div>
+
+            <!-- Hidden audio element -->
+            <audio id="npr-audio" src="media/NPR4022641178.mp3" preload="metadata"></audio>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Card -->
+    <section id="projects">
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+
+        <!-- Header with right-aligned button -->
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold">Projects</h2>
+          <a href="projects.html" 
+            class="px-5 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow hover:bg-blue-700 transition">
+            View All Projects →
+          </a>
+        </div>
+
+        <!-- Snippet preview cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- Rubik’s Cube Card -->
+          <a href="projects.html#project1" class="image-card dark-overlay" style="background-image: url('media/cube.png');">
+            <div class="overlay">
+              <h3>The Rubik’s Cube<br><span>and Group Theory</span></h3>
+              <p>Exploring the cube as a model for abstract algebra and group theory.</p>
+            </div>
+          </a>
+
+          <!-- Goji Card -->
+          <a href="projects.html#goji" class="image-card" style="background-image: url('media/goji-background.png');">
+            <div class="overlay">
+              <h3>Goji</h3>
+              <p>First platform that helps users create Ecological Calendars and map indicators.</p>
+            </div>
+          </a>
+
+          <!-- Peachy Card -->
+          <a href="projects.html#peachy" class="image-card dark-overlay" style="background-image: url('media/peachy-background.jpg');">
+            <div class="overlay">
+              <h3>Peachy</h3>
+              <p>First AI-powered Slack bot to use Google PaLM 2, MongoDB, and Google Cloud Atlas.</p>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+
+
+  <!-- Include after p5.js and before </body> -->
+  <script src="cube.js"></script>
+
+
+    <!-- Generative Art Card -->
+    <section id="art">
+      <div class="bg-white rounded-2xl shadow-xl p-8">
+        <h2 class="text-2xl font-bold mb-4">Generative Art</h2>
+        <p class="text-gray-700">Images, videos, and creative coding work can be displayed here.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Include the p5.js graph paper -->
+  <script src="script.js"></script>
+  <!-- Script for collapsible toggle -->
+  <script>
+    // Research toggle
+    const btnResearch = document.getElementById("toggle-research");
+    const moreResearch = document.getElementById("research-more");
+    const arrowResearch = document.getElementById("arrow-icon");
+
+    btnResearch.addEventListener("click", () => {
+      moreResearch.classList.toggle("hidden");
+      arrowResearch.classList.toggle("rotate-180");
+      btnResearch.querySelector("span").textContent =
+        moreResearch.classList.contains("hidden") ? "Read more" : "Read less";
+    });
+
+    // Passions & Mission toggle
+    const btnPassions = document.getElementById("toggle-passions");
+    const morePassions = document.getElementById("passions-more");
+    const arrowPassions = document.getElementById("arrow-icon-passions");
+
+    btnPassions.addEventListener("click", () => {
+      morePassions.classList.toggle("hidden");
+      arrowPassions.classList.toggle("rotate-180");
+      btnPassions.querySelector("span").textContent =
+        morePassions.classList.contains("hidden") ? "Read more" : "Read less";
+    });
+  </script>
+  <!-- Script for collapsible toggle -->
+  <script>
+    const nprBtn = document.getElementById("toggle-npr");
+    const nprMore = document.getElementById("npr-more");
+    const nprArrow = document.getElementById("arrow-npr");
+
+    nprBtn.addEventListener("click", () => {
+      nprMore.classList.toggle("hidden");
+      nprArrow.classList.toggle("rotate-180");
+      nprBtn.querySelector("span").textContent =
+        nprMore.classList.contains("hidden") ? "Read more" : "Read less";
+    });
+  </script>
+  <script>
+    const playBtn = document.getElementById("play-btn");
+    const audio = document.getElementById("npr-audio");
+    const progressContainer = document.getElementById("progress-container");
+    const progressBar = document.getElementById("progress-bar");
+    const currentTimeEl = document.getElementById("current-time");
+    const totalDurationEl = document.getElementById("total-duration");
+
+    // Format seconds -> mm:ss
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+    }
+
+    // Play / Pause toggle
+    playBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = "⏸";
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶";
+      }
+    });
+
+    // Load duration when metadata is ready
+    audio.addEventListener("loadedmetadata", () => {
+      totalDurationEl.textContent = formatTime(audio.duration);
+    });
+
+    // Update progress + current time
+    audio.addEventListener("timeupdate", () => {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = percent + "%";
+
+      // Replace "Listen now" once playback starts
+      if (!audio.paused) {
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+      }
+    });
+
+    // Seek when clicking progress bar
+    progressContainer.addEventListener("click", (e) => {
+      const rect = progressContainer.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const percent = clickX / width;
+      audio.currentTime = percent * audio.duration;
+    });
+
+    // Share button
+    document.getElementById("share-btn").addEventListener("click", () => {
+      navigator.clipboard.writeText(
+        "https://www.npr.org/transcripts/1198910469"
+      );
+      alert("Link copied to clipboard!");
+    });
+  </script>
+
+</body>
+</html>
