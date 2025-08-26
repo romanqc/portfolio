@@ -11,8 +11,9 @@
 <body class="text-gray-900">
 
   <!-- Banner with Navbar -->
-  <header class="relative w-full h-72">
-    <img src="media/banner.jpg" class="w-full h-full object-cover object-[50%_70%]">
+  <header class="relative w-full h-72 bg-fixed bg-cover bg-center" 
+          style="background-image: url('media/banner2.png');">
+    
     <nav class="absolute top-0 left-0 w-full flex justify-center space-x-8 p-4 bg-black/50 text-white z-20">
       <a href="#about" class="hover:underline">About</a>
       <a href="#research" class="hover:underline">Research</a>
@@ -281,121 +282,147 @@
     </section>
 
 
-
-  <!-- Include after p5.js and before </body> -->
-  <script src="cube.js"></script>
-
-
-    <!-- Generative Art Card -->
-    <section id="art">
+    <section id="art" class="my-12">
       <div class="bg-white rounded-2xl shadow-xl p-8">
         <h2 class="text-2xl font-bold mb-4">Generative Art</h2>
-        <p class="text-gray-700">Images, videos, and creative coding work can be displayed here.</p>
+        <p class="text-gray-700 mb-4">
+          This interactive sketch was created for my YouTube piece Iterations. 
+          Adjust the number of rows and columns, the spacing between points, the 
+          number of arms per piece, and how long each arm stretches to generate 
+          different patterns.
+        </p>
+    
+        <!-- Controls -->
+        <div class="flex flex-wrap gap-4 mb-4">
+          <div>
+            <label for="cols" class="block text-sm font-medium text-gray-700">Columns</label>
+            <input id="cols" type="number" min="0" max="200" value="10"
+              class="w-24 p-2 border rounded-lg">
+          </div>
+          <div>
+            <label for="rows" class="block text-sm font-medium text-gray-700">Rows</label>
+            <input id="rows" type="number" min="0" max="200" value="10"
+              class="w-24 p-2 border rounded-lg">
+          </div>
+          <div>
+            <label for="space" class="block text-sm font-medium text-gray-700">Spacing</label>
+            <input id="space" type="number" min="2" max="200" value="55"
+              class="w-24 p-2 border rounded-lg">
+          </div>
+          <div>
+            <label for="armLength" class="block text-sm font-medium text-gray-700">Arm Length</label>
+            <input id="armLength" type="number" min="1" max="200" value="30"
+              class="w-24 p-2 border rounded-lg">
+          </div>
+          <div>
+            <label for="numArms" class="block text-sm font-medium text-gray-700">Arm Number</label>
+            <input id="numArms" type="number" min="0" max="4" value="3"
+              class="w-24 p-2 border rounded-lg">
+          </div>
+          <div>
+            <label for="armAngle" class="block text-sm font-medium text-gray-700">Arm Angle</label>
+            <input id="armAngle" type="number" min="0" max="4" value="0"
+              class="w-24 p-2 border rounded-lg">
+          </div>
+          
+        </div>
+
+    
+        <!-- Canvas container -->
+        <div id="art-canvas" class="w-full max-w-full overflow-hidden flex justify-center"></div>
       </div>
-    </section>
+    </section>  
 
   </div>
 
-  <!-- Include the p5.js graph paper -->
-  <script src="script.js"></script>
-  <!-- Script for collapsible toggle -->
-  <script>
-    // Research toggle
-    const btnResearch = document.getElementById("toggle-research");
-    const moreResearch = document.getElementById("research-more");
-    const arrowResearch = document.getElementById("arrow-icon");
+<!-- Unified Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    /* ---------- Collapsible Toggles ---------- */
+    function setupToggle(btnId, contentId, arrowId) {
+      const btn = document.getElementById(btnId);
+      const content = document.getElementById(contentId);
+      const arrow = document.getElementById(arrowId);
 
-    btnResearch.addEventListener("click", () => {
-      moreResearch.classList.toggle("hidden");
-      arrowResearch.classList.toggle("rotate-180");
-      btnResearch.querySelector("span").textContent =
-        moreResearch.classList.contains("hidden") ? "Read more" : "Read less";
-    });
+      if (!btn || !content || !arrow) return; // Skip if any missing
 
-    // Passions & Mission toggle
-    const btnPassions = document.getElementById("toggle-passions");
-    const morePassions = document.getElementById("passions-more");
-    const arrowPassions = document.getElementById("arrow-icon-passions");
+      btn.addEventListener("click", () => {
+        content.classList.toggle("hidden");
+        arrow.classList.toggle("rotate-180");
+        btn.querySelector("span").textContent =
+          content.classList.contains("hidden") ? "Read more" : "Read less";
+      });
+    }
 
-    btnPassions.addEventListener("click", () => {
-      morePassions.classList.toggle("hidden");
-      arrowPassions.classList.toggle("rotate-180");
-      btnPassions.querySelector("span").textContent =
-        morePassions.classList.contains("hidden") ? "Read more" : "Read less";
-    });
-  </script>
-  <!-- Script for collapsible toggle -->
-  <script>
-    const nprBtn = document.getElementById("toggle-npr");
-    const nprMore = document.getElementById("npr-more");
-    const nprArrow = document.getElementById("arrow-npr");
+    // Initialize your toggles
+    setupToggle("toggle-research", "research-more", "arrow-icon");
+    setupToggle("toggle-passions", "passions-more", "arrow-icon-passions");
+    setupToggle("toggle-npr", "npr-more", "arrow-npr");
 
-    nprBtn.addEventListener("click", () => {
-      nprMore.classList.toggle("hidden");
-      nprArrow.classList.toggle("rotate-180");
-      nprBtn.querySelector("span").textContent =
-        nprMore.classList.contains("hidden") ? "Read more" : "Read less";
-    });
-  </script>
-  <script>
+    /* ---------- NPR Audio Player ---------- */
     const playBtn = document.getElementById("play-btn");
     const audio = document.getElementById("npr-audio");
     const progressContainer = document.getElementById("progress-container");
     const progressBar = document.getElementById("progress-bar");
     const currentTimeEl = document.getElementById("current-time");
     const totalDurationEl = document.getElementById("total-duration");
+    const shareBtn = document.getElementById("share-btn");
 
-    // Format seconds -> mm:ss
-    function formatTime(seconds) {
-      const mins = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60);
-      return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+    if (audio && playBtn) {
+      // Format seconds -> mm:ss
+      const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+      };
+
+      // Play / Pause toggle
+      playBtn.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          playBtn.textContent = "⏸";
+        } else {
+          audio.pause();
+          playBtn.textContent = "▶";
+        }
+      });
+
+      // Load duration
+      audio.addEventListener("loadedmetadata", () => {
+        totalDurationEl.textContent = formatTime(audio.duration);
+      });
+
+      // Update progress + current time
+      audio.addEventListener("timeupdate", () => {
+        const percent = (audio.currentTime / audio.duration) * 100;
+        progressBar.style.width = percent + "%";
+
+        if (!audio.paused) {
+          currentTimeEl.textContent = formatTime(audio.currentTime);
+        }
+      });
+
+      // Seek when clicking progress bar
+      progressContainer?.addEventListener("click", (e) => {
+        const rect = progressContainer.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = percent * audio.duration;
+      });
+
+      // Share button
+      shareBtn?.addEventListener("click", () => {
+        navigator.clipboard.writeText("https://www.npr.org/transcripts/1198910469");
+        alert("Link copied to clipboard!");
+      });
     }
+  });
+</script>
 
-    // Play / Pause toggle
-    playBtn.addEventListener("click", () => {
-      if (audio.paused) {
-        audio.play();
-        playBtn.textContent = "⏸";
-      } else {
-        audio.pause();
-        playBtn.textContent = "▶";
-      }
-    });
 
-    // Load duration when metadata is ready
-    audio.addEventListener("loadedmetadata", () => {
-      totalDurationEl.textContent = formatTime(audio.duration);
-    });
-
-    // Update progress + current time
-    audio.addEventListener("timeupdate", () => {
-      const percent = (audio.currentTime / audio.duration) * 100;
-      progressBar.style.width = percent + "%";
-
-      // Replace "Listen now" once playback starts
-      if (!audio.paused) {
-        currentTimeEl.textContent = formatTime(audio.currentTime);
-      }
-    });
-
-    // Seek when clicking progress bar
-    progressContainer.addEventListener("click", (e) => {
-      const rect = progressContainer.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const width = rect.width;
-      const percent = clickX / width;
-      audio.currentTime = percent * audio.duration;
-    });
-
-    // Share button
-    document.getElementById("share-btn").addEventListener("click", () => {
-      navigator.clipboard.writeText(
-        "https://www.npr.org/transcripts/1198910469"
-      );
-      alert("Link copied to clipboard!");
-    });
-  </script>
+    <!-- Include the p5.js graph paper -->
+  <script src="script.js"></script>
+  <!-- Include after p5.js and before </body> -->
+  <script src="iterations.js"></script>
 
 </body>
 </html>

@@ -12,6 +12,45 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Extra control if you want */
+header {
+  background-position: center 60%; /* matches your object-[50%_70%] */
+  background-repeat: no-repeat;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden; /* prevent horizontal scrollbars */
+}
+
+
+
+.parallax-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;       /* bigger than container to avoid gaps */
+  object-fit: cover;
+  object-position: 50% 70%;
+
+  /* Scroll-driven parallax */
+  animation: parallax-move linear;
+  animation-timeline: scroll();     /* experimental, Chrome/Safari TP */
+  animation-range: 0 400px;         /* controls how long before it maxes out */
+}
+
+@keyframes parallax-move {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-40px);   /* slow drift upwards */
+  }
+}
+
 /* Optional: nicer defaults for long text in the Highlights card */
 .prose h3 { font-size: 1.5rem; font-weight: 700; margin-top: 1rem; margin-bottom: 0.5rem; }
 .prose h4 { font-size: 1.25rem; font-weight: 600; margin-top: 0.75rem; margin-bottom: 0.5rem; }
