@@ -380,10 +380,10 @@
       playBtn.addEventListener("click", () => {
         if (audio.paused) {
           audio.play();
-          playBtn.textContent = "&#9654;"; // ▶ 
+          playBtn.innerHTML = "&#10073;&#10073;"; // ⏸ (two vertical bars)
         } else {
           audio.pause();
-          playBtn.textContent = "&#10073;&#10073;"; // ⏸ (two vertical bars)
+          playBtn.innerHTML = "&#9654;"; // ▶ 
         }
       });
 
