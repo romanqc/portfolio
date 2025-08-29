@@ -2,10 +2,25 @@ function cubeSketch(p) {
   let canvasObj;
 
   p.setup = function () {
-    let cnv = p.createCanvas(700, 700);
+    // ✅ Responsive square canvas
+    const container = document.getElementById("art-canvas");
+    const size = container.offsetWidth;
+    let cnv = p.createCanvas(size, size);
     cnv.parent("art-canvas");
     p.noLoop(); // only draw when told to
 
+    // ✅ Mobile defaults
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile) {
+      document.getElementById("cols").value = 6;
+      document.getElementById("rows").value = 6;
+      document.getElementById("space").value = 40;
+      document.getElementById("armLength").value = 20;
+      document.getElementById("numArms").value = 2;
+      document.getElementById("armAngle").value = 1;
+    }
+
+    // ✅ Event listeners
     document.getElementById("rows").addEventListener("input", redrawArt);
     document.getElementById("cols").addEventListener("input", redrawArt);
     document.getElementById("space").addEventListener("input", redrawArt);
@@ -13,6 +28,8 @@ function cubeSketch(p) {
     document.getElementById("numArms").addEventListener("input", redrawArt);
     document.getElementById("armAngle").addEventListener("input", redrawArt);
 
+    // ✅ Draw once with defaults
+    redrawArt();
   };
 
   function redrawArt() {
@@ -39,7 +56,13 @@ function cubeSketch(p) {
     p.noLoop();
   };
 
-
+  // ✅ Handle resizing
+  p.windowResized = function () {
+    const container = document.getElementById("art-canvas");
+    const size = container.offsetWidth;
+    p.resizeCanvas(size, size);
+    redrawArt();
+  };
 
   // ---- Classes ---- //
 
@@ -92,7 +115,6 @@ function cubeSketch(p) {
 
         let x1 = x0 + p.round(radius * p.cos(theta + this.phi));
         let y1 = y0 + p.round(radius * p.sin(theta + this.phi));
-
 
         arms.push(new Point(x1, y1));
       }

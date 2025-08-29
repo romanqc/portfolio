@@ -139,13 +139,13 @@
           <img 
             src="media/teaching.png" 
             alt="Teaching photo" 
-            class="w-full h-64 object-cover rounded-2xl shadow-md"
+            class="w-full object-cover rounded-2xl shadow-md"
           />
           <!-- Hover card -->
           <div class="absolute inset-0 bg-black bg-opacity-50 rounded-2xl flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <!-- Description text -->
             <p class="text-white text-center p-4">
-              Teaching high school students how to solve the Rubik's Cube at SMASH Academy
+              Teaching high school students how to solve the Rubik's Cube at SMASH Academy, UC Berkeley
             </p>
             <!-- Date in bottom right -->
             <span class="absolute bottom-2 right-2 text-white text-sm opacity-80">July 15, 2025</span>
@@ -153,12 +153,12 @@
         </div>
 
         <!-- Passions & Mission Card -->
-        <div class="w-full h-64 bg-white rounded-2xl shadow-md p-6 flex flex-col justify-center">
+        <div class="w-full bg-white rounded-2xl shadow-md p-6 flex flex-col justify-start">
           <h3 class="text-xl font-bold text-gray-800 mb-2">Passions & Mission</h3>
-          <p class="text-gray-700 text-sm leading-relaxed">
+          <p class="text-gray-700 leading-relaxed">
             I am passionate about sharing knowledge and helping students understand the inner workings of mathematics, encouraging them to see the world through a mathematical lens.
           </p>
-          <p class="text-gray-700 text-sm leading-relaxed mt-2">
+          <p class="text-gray-700 leading-relaxed mt-2">
             As the founder of the <strong>Jr. Oakland Cubers</strong>, I have helped over <strong>1,000 youth</strong>, particularly marginalized youth, learn to solve the Rubik’s Cube, building confidence and problem-solving skills along the way.
           </p>
 
@@ -296,27 +296,27 @@
         <div class="flex flex-wrap gap-4 mb-4">
           <div>
             <label for="cols" class="block text-sm font-medium text-gray-700">Columns</label>
-            <input id="cols" type="number" min="0" max="200" value="10"
+            <input id="cols" type="number" min="0" max="200" value="14"
               class="w-24 p-2 border rounded-lg">
           </div>
           <div>
             <label for="rows" class="block text-sm font-medium text-gray-700">Rows</label>
-            <input id="rows" type="number" min="0" max="200" value="10"
+            <input id="rows" type="number" min="0" max="200" value="14"
               class="w-24 p-2 border rounded-lg">
           </div>
           <div>
             <label for="space" class="block text-sm font-medium text-gray-700">Spacing</label>
-            <input id="space" type="number" min="2" max="200" value="55"
+            <input id="space" type="number" min="2" max="200" value="21"
               class="w-24 p-2 border rounded-lg">
           </div>
           <div>
             <label for="armLength" class="block text-sm font-medium text-gray-700">Arm Length</label>
-            <input id="armLength" type="number" min="1" max="200" value="30"
+            <input id="armLength" type="number" min="1" max="200" value="20"
               class="w-24 p-2 border rounded-lg">
           </div>
           <div>
             <label for="numArms" class="block text-sm font-medium text-gray-700">Arm Number</label>
-            <input id="numArms" type="number" min="0" max="4" value="3"
+            <input id="numArms" type="number" min="0" max="4" value="2"
               class="w-24 p-2 border rounded-lg">
           </div>
           <div>
@@ -329,8 +329,8 @@
 
     
         <!-- Canvas container -->
-        <div id="art-canvas" class="w-full max-w-full overflow-hidden flex justify-center"></div>
-      </div>
+        <div id="art-canvas" class="w-full max-w-md aspect-square flex items-center justify-center mx-auto"></div>
+        </div>
     </section>  
 
   </div>
@@ -380,10 +380,10 @@
       playBtn.addEventListener("click", () => {
         if (audio.paused) {
           audio.play();
-          playBtn.textContent = "⏸";
+          playBtn.textContent = "&#9654;"; // ▶ 
         } else {
           audio.pause();
-          playBtn.textContent = "▶";
+          playBtn.textContent = "&#10073;&#10073;"; // ⏸ (two vertical bars)
         }
       });
 
@@ -415,8 +415,20 @@
         alert("Link copied to clipboard!");
       });
     }
+
+    /* ---------- Mobile Defaults for Generative Art ---------- */
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile) {
+      document.getElementById("cols").value = 6;
+      document.getElementById("rows").value = 6;
+      document.getElementById("space").value = 40;
+      document.getElementById("armLength").value = 20;
+      document.getElementById("numArms").value = 2;
+      document.getElementById("armAngle").value = 1;
+    }
   });
 </script>
+
 
 
     <!-- Include the p5.js graph paper -->
