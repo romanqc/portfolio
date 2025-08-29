@@ -215,8 +215,11 @@
             <!-- Play button -->
             <button id="play-btn" 
               class="p-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition shadow w-12 h-12 flex items-center justify-center mb-2">
+              <!-- Default: play icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M6 4l12 6-12 6V4z"/>
+              </svg>
             </button>
-
 
             <!-- Progress bar -->
             <div class="w-full">
@@ -361,13 +364,25 @@
 
     /* ---------- NPR Audio Player ---------- */
     const playBtn = document.getElementById("play-btn");
-    playBtn.textContent = "\u25B6"; // ▶ Unicode symbol (not emoji)
     const audio = document.getElementById("npr-audio");
     const progressContainer = document.getElementById("progress-container");
     const progressBar = document.getElementById("progress-bar");
     const currentTimeEl = document.getElementById("current-time");
     const totalDurationEl = document.getElementById("total-duration");
     const shareBtn = document.getElementById("share-btn");
+
+    // SVG icons
+    const playIcon = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M6 4l12 6-12 6V4z"/>
+      </svg>
+    `;
+
+    const pauseIcon = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M6 4h4v12H6V4zm6 0h4v12h-4V4z"/>
+      </svg>
+    `;
 
     if (audio && playBtn) {
       // Format seconds -> mm:ss
@@ -381,10 +396,10 @@
       playBtn.addEventListener("click", () => {
         if (audio.paused) {
           audio.play();
-          playBtn.innerHTML = "&#10073;&#10073;"; // ⏸ (two vertical bars)
+          playBtn.innerHTML = pauseIcon; // swap to pause
         } else {
           audio.pause();
-          playBtn.innerHTML = "&#9654;"; // ▶ 
+          playBtn.innerHTML = playIcon;  // swap to play
         }
       });
 
@@ -416,6 +431,7 @@
         alert("Link copied to clipboard!");
       });
     }
+
 
     /* ---------- Mobile Defaults for Generative Art ---------- */
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
