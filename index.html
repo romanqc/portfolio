@@ -214,9 +214,9 @@
           <div class="flex flex-col justify-center w-full">
             <!-- Play button -->
             <button id="play-btn" 
-                    class="p-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition shadow w-12 h-12 flex items-center justify-center mb-2">
-              ▶
+              class="p-3 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition shadow w-12 h-12 flex items-center justify-center mb-2">
             </button>
+
 
             <!-- Progress bar -->
             <div class="w-full">
@@ -361,6 +361,7 @@
 
     /* ---------- NPR Audio Player ---------- */
     const playBtn = document.getElementById("play-btn");
+    playBtn.textContent = "\u25B6"; // ▶ Unicode symbol (not emoji)
     const audio = document.getElementById("npr-audio");
     const progressContainer = document.getElementById("progress-container");
     const progressBar = document.getElementById("progress-bar");
