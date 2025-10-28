@@ -25,30 +25,62 @@
   <!-- Page content wrapper -->
   <div class="max-w-5xl mx-auto px-4 sm:px-8 space-y-12">
 
-    <!-- Profile + Bio Card -->
-    <section id="about" class="flex justify-start -mt-24 relative z-30">
-      <div class="bg-white rounded-2xl shadow-xl p-8 flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8 w-full">
-        <!-- Profile image -->
-        <div class="w-56 h-56 rounded-full overflow-hidden flex-shrink-0">
-          <img src="media/profile.jpg" 
-            class="block object-cover object-[100%_10%] w-[190%] h-[160%]" 
-            alt="Profile">
+  <!-- Profile + Bio Card -->
+  <section id="about" class="flex justify-start -mt-24 relative z-30">
+    <div class="relative bg-white rounded-2xl shadow-xl p-8 flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8 w-full">
+
+      <!-- Profile image -->
+      <div class="w-56 h-56 rounded-full overflow-hidden flex-shrink-0">
+        <img 
+          src="media/profile.jpg"
+          class="block object-cover object-[100%_10%] w-[190%] h-[160%]"
+          alt="Profile">
+      </div>
+
+      <!-- Bio text -->
+      <div class="text-left w-full relative">
+
+        <!-- Icons (visible only above 811px) -->
+        <div class="absolute top-0 right-0 flex space-x-4">
+          <a href="https://www.linkedin.com/in/romanqchavez/"
+            target="_blank"
+            aria-label="LinkedIn"
+            class="icon-hover linkedin">
+            <img src="assets/linkedin.svg" alt="LinkedIn" class="icon-img">
+          </a>
+          <a href="https://github.com/romanqc"
+            target="_blank"
+            aria-label="GitHub"
+            class="icon-hover github">
+            <img src="assets/github.svg" alt="GitHub" class="icon-img">
+          </a>
+          <a href="https://www.youtube.com/@romanqc"
+            target="_blank"
+            aria-label="YouTube"
+            class="icon-hover youtube">
+            <img src="assets/youtube.svg" alt="YouTube" class="icon-img">
+          </a>
         </div>
 
-        <!-- Bio text -->
-        <div class="text-left w-full">
-          <h2 class="text-3xl font-bold mb-1 text-center sm:text-left">Roman Q. Chavez</h2>
-          <p class="text-gray-500 text-sm mb-3 text-center sm:text-left">
-            Student at Cornell University &middot; Pure Mathematics, Indigenous Studies
-          </p>
-          <p class="text-gray-700 leading-relaxed">
-            I’m a senior at Cornell University studying Pure Mathematics, with a minor in American Indian and Indigenous Studies. 
-            I am also an undergraduate researcher in the Department of Natural Resources studying ecological calendars and their mathematical implications. 
-            My interests include algebra, differential forms, ecological calendars, policy, and generative/algorithmic art using Java Processing.
-          </p>
-        </div>
+        <!-- Name -->
+        <h2 class="text-3xl font-bold mb-1 text-center sm:text-left">Roman Q. Chavez</h2>
+
+        <!-- Bio -->
+        <p class="text-gray-500 text-sm mb-3 text-center sm:text-left">
+          Student at Cornell University &middot; Pure Mathematics, Indigenous Studies
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          I’m a senior at Cornell University studying Pure Mathematics, with a minor in American Indian and Indigenous Studies. 
+          I am also an undergraduate researcher in the Department of Natural Resources studying ecological calendars and their mathematical implications. 
+          My interests include algebra, differential forms, ecological calendars, policy, and generative/algorithmic art using Java Processing.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
+
+
+
+
 
     <!-- Photo Section -->
     <section class="w-full max-w-5xl mx-auto">
@@ -154,7 +186,7 @@
 
         <!-- Passions & Mission Card -->
         <div class="w-full bg-white rounded-2xl shadow-md p-6 flex flex-col justify-start">
-          <h3 class="text-xl font-bold text-gray-800 mb-2">Passions & Mission</h3>
+          <h2 class="text-xl font-bold text-gray-800 mb-2">Passions & Mission</h2>
           <p class="text-gray-700 leading-relaxed">
             I am passionate about sharing knowledge and helping students understand the inner workings of mathematics, encouraging them to see the world through a mathematical lens.
           </p>
@@ -335,6 +367,46 @@
         <div id="art-canvas" class="w-full max-w-md aspect-square flex items-center justify-center mx-auto"></div>
         </div>
     </section>  
+
+    <!-- Contact Section -->
+        <!-- Contact Section -->
+    <section id="contact" class="w-full max-w-5xl mx-auto mt-20">
+      <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+        <h2 class="text-2xl font-bold mb-4">Contact</h2>
+        <p class="text-gray-700 mb-6">
+          You can reach me at 
+          <a href="mailto:rqchavez@cornell.edu" class="text-blue-600 hover:underline">
+            rqc3@cornell.edu
+          </a>
+        </p>
+
+        <!-- Social Icons -->
+        <div class="flex justify-center space-x-6">
+          <a href="https://www.linkedin.com/in/romanqchavez/"
+            target="_blank"
+            aria-label="LinkedIn"
+            class="icon-hover linkedin transition duration-300">
+            <img src="assets/linkedin.svg" alt="LinkedIn" class="icon-img w-8 h-8">
+          </a>
+          <a href="https://github.com/romanqc"
+            target="_blank"
+            aria-label="GitHub"
+            class="icon-hover github transition duration-300">
+            <img src="assets/github.svg" alt="GitHub" class="icon-img w-8 h-8">
+          </a>
+          <a href="https://www.youtube.com/@romanqc"
+            target="_blank"
+            aria-label="YouTube"
+            class="icon-hover youtube transition duration-300">
+            <img src="assets/youtube.svg" alt="YouTube" class="icon-img w-8 h-8">
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+
+
 
   </div>
 

@@ -82,6 +82,14 @@ html, body {
   text-align: center !important;
   margin: 1em 0 !important;
 }
+
+@media (max-width: 811px) {
+  #about .absolute.top-0.right-0 {
+    display: none !important;
+  }
+}
+
+
  
 /* ===== MathJax: keep inline math in-flow ===== */
 
@@ -204,4 +212,31 @@ html, body {
   background: rgba(0, 0, 0, 0.85);
 }
 
+/* === SVG icon recolor with smooth hover === */
+.icon-img {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: inline-block;
+  filter: grayscale(100%) brightness(0) invert(30%);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
 
+/* Add a subtle zoom on hover */
+.icon-hover:hover .icon-img {
+  transform: scale(1.1);
+}
+
+/* LinkedIn hover (blue) */
+.icon-hover.linkedin:hover .icon-img {
+  filter: brightness(0) saturate(100%) invert(31%) sepia(92%) saturate(1622%) hue-rotate(186deg) brightness(96%) contrast(101%);
+}
+
+/* GitHub hover (black) */
+.icon-hover.github:hover .icon-img {
+  filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+
+/* YouTube hover (red) */
+.icon-hover.youtube:hover .icon-img {
+  filter: brightness(0) saturate(100%) invert(12%) sepia(100%) saturate(7481%) hue-rotate(356deg) brightness(94%) contrast(120%);
+}
