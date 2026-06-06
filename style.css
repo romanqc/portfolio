@@ -165,4 +165,35 @@ html {
   background: rgba(0, 0, 0, 0.85);
 }
 
+/* Support section pills */
+.support-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.support-pill:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.venmo-pill {
+  background-color: #008CFF;
+}
+
+.bmac-pill {
+  background-color: #FFDD00;
+  color: #1a1a1a;
+}
+
+.bmac-pill svg path {
+  fill: #1a1a1a;
+}
 
