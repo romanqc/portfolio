@@ -4,10 +4,13 @@ function setup() {
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.id('graphCanvas');
   canvas.style('position', 'fixed');
-  canvas.style('top', '0');
-  canvas.style('left', '0');
-  canvas.style('z-index', '-10'); // behind content
+  canvas.style('top', '0px');
+  canvas.style('left', '0px');
+  canvas.style('margin', '0');     // prevent white gap
+  canvas.style('padding', '0');    // prevent white gap
+  canvas.style('z-index', '-10');  // behind content
 }
+
 
 function draw() {
   clear();
